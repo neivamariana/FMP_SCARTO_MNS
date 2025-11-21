@@ -27,6 +27,11 @@ public class TestDeck : MonoBehaviour
             }
         }
 
+        foreach (Card card in hands[0])
+        {
+            card.Print();
+        }
+
         // Add the 3 remaining cards to the dealer
         for (int i = 0; i < 3; i++)
         {

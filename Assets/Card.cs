@@ -32,9 +32,30 @@ public class Card
         }
     }
 
+    public int Score()
+    {
+        int score = 0;
+        switch (suit)
+        {
+            case Suit.Spades:
+            case Suit.Clubs:
+            case Suit.Hearts:
+            case Suit.Diamonds:
+                score = Mathf.Max(faceValue - 9, 1);
+                break;
+            case Suit.Trumps:
+                score = (faceValue == 21 || faceValue == 1) ? 5 : 1;
+                break;
+            case Suit.Fool:
+                score = 5;
+                break;                 
+        }
+        return score;
+    }
+
     public void Print()
     {
-        Debug.Log($"Suit {suit} face value {faceValue}");
+        Debug.Log($"Suit {suit} face value {faceValue} points {Score()}");
     }
 
     public bool LowerArcana()
