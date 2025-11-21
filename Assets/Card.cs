@@ -49,11 +49,11 @@ public class Card
         {
             return faceValue - card.faceValue;
         }
-        else if (LowerArcana())
+        else if (LowerArcana() && !card.LowerArcana())
         {
             return -1;
         }
-        else if (card.LowerArcana())
+        else if (!LowerArcana() && card.LowerArcana())
         {
             return 1;
         }
