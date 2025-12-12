@@ -1,13 +1,11 @@
-using System.Collections;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Cards
+public class Card
 {
-    // value of the cards is a int variable 
     int faceValue;
-
-    // enumeration type, is a value type set of named constants, so the enum type is Suit and the constants are spades, clubs, etc...
-    enum Suit 
+    enum Suit
     {
         Spades,
         Clubs,
@@ -21,7 +19,7 @@ public class Cards
 
     public static IEnumerable<Card> GetDeck()
     {
-        int[] values = new int[] { 14, 14, 14, 14, 21, 1 };
+        int[] values = new int [] { 14, 14, 14, 14, 21, 1 };
         for (int suit = (int)Suit.Spades; suit <= (int)Suit.Fool; suit++)
         {
             for (int value = 0; value < values[suit]; value++)
@@ -32,6 +30,11 @@ public class Cards
                 yield return card;
             }
         }
+    }
+
+    public void Print()
+    {
+        Debug.Log($"Suit {suit} face value {faceValue}");
     }
 
     public bool LowerArcana()
@@ -59,13 +62,4 @@ public class Cards
             return faceValue - card.faceValue;
         }
     }
-
-
-
-
-
-
-
-
-
 }
